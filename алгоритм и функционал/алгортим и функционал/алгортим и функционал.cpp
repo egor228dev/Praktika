@@ -1,0 +1,109 @@
+﻿void selection_sort(int arr[], int n) {
+    for (int i = n - 1; i > 0; i--) {
+        int min_idx = 0;
+        for (int j = 1; j <= i; j++) {
+            if (arr[j] < arr[min_idx]) {
+                min_idx = j;
+            }
+        }
+        int temp = arr[min_idx];
+        arr[min_idx] = arr[i];
+        arr[i] = temp;
+    }
+}
+void edit_array() {
+    int choice, index, value;
+
+    while (1) {
+        system("cls");
+        print_array(array, array_size);
+        display_edit_array_menu();
+
+        if (scanf_s("%d", &choice) != 1) {
+            printf("Некорректный ввод. Пожалуйста, введите число.\n");
+            clean_stdin();
+            system("pause");
+            continue;
+        }
+
+        switch (choice) {
+        case 1: // Добавить элемент
+            if (array_size >= MAX_ARRAY_SIZE) {
+                printf("Массив полон! Невозможно добавить элемент.\n");
+                system("pause");
+                break;
+            }
+            printf("Введите значение нового элемента: ");
+            if (scanf_s("%d", &value) != 1) {
+                printf("Некорректный ввод.\n");
+                clean_stdin();
+            }
+            else {
+                array[array_size++] = value;
+                printf("Элемент добавлен.\n");
+            }
+            system("pause");
+            break;
+
+        case 2: // Изменить элемент
+            if (array_size == 0) {
+                printf("Массив пуст! Невозможно изменить элемент.\n");
+                system("pause");
+                break;
+            }
+            printf("Введите индекс элемента (0-%d): ", array_size - 1);
+            if (scanf_s("%d", &index) != 1 || index < 0 || index >= array_size) {
+                printf("Некорректный индекс.\n");
+                clean_stdin();
+            }
+            else {
+                printf("Текущее значение: %d. Введите новое значение: ", array[index]);
+                if (scanf_s("%d", &value) != 1) {
+                    printf("Некорректный ввод.\n");
+                    clean_stdin();
+                }
+                else {
+                    array[index] = value;
+                    printf("Элемент изменен.\n");
+                }
+            }
+            system("pause");
+            break;
+
+        case 3: // Удалить элемент
+            if (array_size == 0) {
+                printf("Массив пуст! Невозможно удалить элемент.\n");
+                system("pause");
+                break;
+            }
+            printf("Введите индекс элемента для удаления (0-%d): ", array_size - 1);
+            if (scanf_s("%d", &index) != 1 || index < 0 || index >= array_size) {
+                printf("Некорректный индекс.\n");
+                clean_stdin();
+            }
+            else {
+                for (int i = index; i < array_size - 1; i++) {
+                    array[i] = array[i + 1];
+                }
+                array_size--;
+                printf("Элемент удален.\n");
+            }
+            system("pause");
+            break;
+
+        case 4: // Очистить массив
+            array_size = 0;
+            printf("Массив очищен.\n");
+            system("pause");
+            break;
+
+        case 5: // Выход
+            return;
+
+        default:
+            printf("Неизвестная команда. Попробуйте снова.\n");
+            system("pause");
+            break;
+        }
+    }
+}

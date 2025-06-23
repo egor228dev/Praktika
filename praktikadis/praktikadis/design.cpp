@@ -21,6 +21,20 @@ void clean_stdin() {
     int c;
     while ((c = getchar()) != '\n' && c != EOF) {}
 }
+void display_main_menu() {
+    system("cls");
+    printf("Программа сортировки выбором (минимальные элементы в конец)\n");
+    printf("--------------------------------------------------------\n");
+    printf("\nМеню:\n");
+    printf("1. Создать пример CSV файла\n");
+    printf("2. Загрузить массив из CSV файла\n");
+    printf("3. Отсортировать текущий массив\n");
+    printf("4. Сохранить массив в CSV файл\n");
+    printf("5. Показать текущий массив\n");
+    printf("6. Редактировать массив\n");
+    printf("7. Выход\n");
+    printf("Выберите действие: ");
+}
 void display_create_example_menu() {
     system("cls");
     printf("Создание примера CSV файла\n");
@@ -67,7 +81,7 @@ void edit_array() {
         }
 
         switch (choice) {
-        case 1: // Добавить элемент
+        case 1: 
             if (array_size >= MAX_ARRAY_SIZE) {
                 printf("Массив полон! Невозможно добавить элемент.\n");
                 system("pause");
@@ -85,7 +99,7 @@ void edit_array() {
             system("pause");
             break;
 
-        case 2: // Изменить элемент
+        case 2: 
             if (array_size == 0) {
                 printf("Массив пуст! Невозможно изменить элемент.\n");
                 system("pause");
@@ -110,7 +124,7 @@ void edit_array() {
             system("pause");
             break;
 
-        case 3: // Удалить элемент
+        case 3: 
             if (array_size == 0) {
                 printf("Массив пуст! Невозможно удалить элемент.\n");
                 system("pause");
@@ -131,13 +145,13 @@ void edit_array() {
             system("pause");
             break;
 
-        case 4: // Очистить массив
+        case 4: 
             array_size = 0;
             printf("Массив очищен.\n");
             system("pause");
             break;
 
-        case 5: // Выход
+        case 5: 
             return;
 
         default:
@@ -152,19 +166,7 @@ int system_sort() {
     int choice;
     char filename[256];
     while (1) {
-        // TODO 155-166 вынести в отдельную функцию
-        system("cls");
-        printf("Программа сортировки выбором (минимальные элементы в конец)\n");
-        printf("--------------------------------------------------------\n");
-        printf("\nМеню:\n");
-        printf("1. Создать пример CSV файла\n");
-        printf("2. Загрузить массив из CSV файла\n");
-        printf("3. Отсортировать текущий массив\n");
-        printf("4. Сохранить массив в CSV файл\n");
-        printf("5. Показать текущий массив\n");
-        printf("6. Редактировать массив\n");
-        printf("7. Выход\n");
-        printf("Выберите действие: ");
+        display_main_menu();
 
         if (scanf_s("%d", &choice) != 1) {
             printf("Некорректный ввод. Пожалуйста, введите число.\n");
@@ -178,28 +180,29 @@ int system_sort() {
             int create_choice;
             while (1) {
                 display_create_example_menu();
-                // TODO переписать на switch-case
                 if (scanf_s("%d", &create_choice) != 1) {
                     printf("Некорректный ввод. Пожалуйста, введите число.\n");
                     clean_stdin();
                     system("pause");
                     continue;
                 }
-                if (create_choice == 1) {
+
+                switch (create_choice) {
+                case 1:
                     printf("Введите полный путь к файлу (например, C:\\path\\to\\file.csv): ");
                     scanf_s("%s", filename, 255);
                     break;
-                }
-                else if (create_choice == 2) {
+                case 2:
+                    
                     break;
-                }
-                else if (create_choice == 3) {
+                case 3:
                     break;
-                }
-                else {
+                default:
                     printf("Неизвестная команда. Попробуйте снова.\n");
                     system("pause");
+                    continue;
                 }
+                break;
             }
             break;
         }
@@ -207,7 +210,6 @@ int system_sort() {
             int load_choice;
             while (1) {
                 display_load_array_menu();
-                // TODO переписать на switch-case
                 if (scanf_s("%d", &load_choice) != 1) {
                     printf("Некорректный ввод. Пожалуйста, введите число.\n");
                     clean_stdin();
@@ -215,7 +217,8 @@ int system_sort() {
                     continue;
                 }
 
-                if (load_choice == 1) {
+                switch (load_choice) {
+                case 1:
                     printf("Введите полный путь к файлу: ");
                     scanf_s("%s", filename, 255);
                     if (read_csv(filename)) {
@@ -223,8 +226,7 @@ int system_sort() {
                     }
                     system("pause");
                     break;
-                }
-                else if (load_choice == 2) {
+                case 2:
                     if (read_csv("input.csv")) {
                         printf("Массив успешно загружен из input.csv:\n");
                     }
@@ -233,14 +235,14 @@ int system_sort() {
                     }
                     system("pause");
                     break;
-                }
-                else if (load_choice == 3) {
+                case 3:
                     break;
-                }
-                else {
+                default:
                     printf("Неизвестная команда. Попробуйте снова.\n");
                     system("pause");
+                    continue;
                 }
+                break;
             }
             break;
         }

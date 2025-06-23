@@ -3,6 +3,7 @@
 #include <conio.h>
 #include <stdlib.h>
 #include <string.h>
+
 #define MAX_ARRAY_SIZE 1000
 
 int array[MAX_ARRAY_SIZE];
@@ -151,6 +152,7 @@ int system_sort() {
     int choice;
     char filename[256];
     while (1) {
+        // TODO 155-166 вынести в отдельную функцию
         system("cls");
         printf("Программа сортировки выбором (минимальные элементы в конец)\n");
         printf("--------------------------------------------------------\n");
@@ -163,6 +165,7 @@ int system_sort() {
         printf("6. Редактировать массив\n");
         printf("7. Выход\n");
         printf("Выберите действие: ");
+
         if (scanf_s("%d", &choice) != 1) {
             printf("Некорректный ввод. Пожалуйста, введите число.\n");
             clean_stdin();
@@ -175,6 +178,7 @@ int system_sort() {
             int create_choice;
             while (1) {
                 display_create_example_menu();
+                // TODO переписать на switch-case
                 if (scanf_s("%d", &create_choice) != 1) {
                     printf("Некорректный ввод. Пожалуйста, введите число.\n");
                     clean_stdin();
@@ -203,6 +207,7 @@ int system_sort() {
             int load_choice;
             while (1) {
                 display_load_array_menu();
+                // TODO переписать на switch-case
                 if (scanf_s("%d", &load_choice) != 1) {
                     printf("Некорректный ввод. Пожалуйста, введите число.\n");
                     clean_stdin();

@@ -1,3 +1,0 @@
-﻿  ConsoleApplication23.cpp
-C:\Users\barri\source\repos\ConsoleApplication23\ConsoleApplication23\ConsoleApplication23.cpp(147,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-  ConsoleApplication23.vcxproj -> C:\Users\barri\source\repos\ConsoleApplication23\Debug\ConsoleApplication23.exe

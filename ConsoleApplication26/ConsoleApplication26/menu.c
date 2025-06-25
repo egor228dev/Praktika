@@ -116,6 +116,7 @@ int system_sort() {
                 else if (load_choice == 2) {
                     if (read_csv("input.csv")) print_array(array, array_size);
                 }
+                system("pause");
                 break;
             }
             break;

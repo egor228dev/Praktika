@@ -1,8 +1,3 @@
-﻿  array.c
-C:\Users\barri\source\repos\ConsoleApplication26\ConsoleApplication26\array.c(10,32): warning C4013: display_edit_array_menu: нет определения; предполагается "extern" с возвратом типа "int"
-  main.c
-C:\Users\barri\source\repos\ConsoleApplication26\ConsoleApplication26\main.c(8,16): warning C4013: system_sort: нет определения; предполагается "extern" с возвратом типа "int"
-  menu.c
+﻿  menu.c
 C:\Users\barri\source\repos\ConsoleApplication26\ConsoleApplication26\menu.c(56,21): warning C4244: функция: преобразование "time_t" в "unsigned int", возможна потеря данных
-  Создание кода...
   ConsoleApplication26.vcxproj -> C:\Users\barri\source\repos\ConsoleApplication26\Debug\ConsoleApplication26.exe
